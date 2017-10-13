@@ -1,7 +1,7 @@
-# Define a new directive `code-block` (aliased as `sourcecode`) that uses the 
-# `pygments` source highlighter to render code in color. 
+# Define a new directive `code-block` (aliased as `sourcecode`) that uses the
+# `pygments` source highlighter to render code in color.
 #
-# Incorporates code from the `Pygments`_ documentation for `Using Pygments in 
+# Incorporates code from the `Pygments`_ documentation for `Using Pygments in
 # ReST documents`_ and `Octopress`_.
 #
 # .. _Pygments: http://pygments.org/
@@ -51,8 +51,8 @@ class Pygments(Directive):
 
         # Construct cache filename
         cache_file = None
-        content_text = u'\n'.join(self.content)
-        cache_file_name = '%s-%s.html' % (lexer_name, hashlib.md5(content_text).hexdigest())
+        content_text = u'\n'.join(self.content).encode('utf-8')
+        cache_file_name = u'%s-%s.html' % (lexer_name, hashlib.md5(content_text).hexdigest())
         cached_path = os.path.join(PYGMENTS_CACHE_DIR, cache_file_name)
 
         # Look for cached version, otherwise parse
