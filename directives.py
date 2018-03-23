@@ -66,13 +66,9 @@ class Pygments(Directive):
         pres = re.compile("<pre>(.+)<\/pre>", re.S)
         stripped = pres.search(parsed).group(1)
 
-        # Create tabular code with line numbers
-        table = '<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers">'
         lined = ''
         for idx, line in enumerate(stripped.splitlines(True)):
-            table += '<span class="line-number">%d</span>\n' % (idx + 1)
-            lined  += '<span class="line">%s</span>' % line
-        table += '</pre></td><td class="code"><pre><code class="%s">%s</code></pre></td></tr></table></div>' % (lexer_name, lined)
+            lined += '<span class="line">%s</span>' % line
 
         # Add wrapper with optional caption and link
         code = '<figure class="code">'
@@ -83,7 +79,8 @@ class Pygments(Directive):
 
             if caption or link:
                 code += '<figcaption>%s %s</figcaption>' % (caption, link)
-        code += '%s</figure>' % table
+        code += '<div class="highlight"><pre><code class="%s">%s</code></pre></div>' % (lexer_name, lined)
+        code += '</figure>'
 
         # Write cache
         if cache_file is None:
