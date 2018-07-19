@@ -1,9 +1,13 @@
 Overview
 ========
 
-This plugin adds `ReStructuredText`_ support to `Jekyll`_ and `Octopress`_. 
+This plugin is a fork of `jekyll-rst <https://github.com/xdissent/jekyll-rst>`_ that adds `ReStructuredText`_ support to `Jekyll`_ and `Octopress`_. 
 It renders ReST in posts and pages, and provides a custom directive to
 support Octopress-compatible syntax highlighting.
+
+This version supports rst2html5 conversion but hasn't been tested for Octopress compatability.
+
+The main change on this fork is that since rst2html5 doesn't return **parts** like rst2html does this verions uses Nokogiri to extract the body contents. 
 
 Requirements
 ============
