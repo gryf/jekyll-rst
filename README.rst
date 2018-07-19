@@ -7,7 +7,7 @@ support Octopress-compatible syntax highlighting.
 
 This version supports rst2html5 conversion but hasn't been tested for Octopress compatability.
 
-The main change on this fork is that since rst2html5 doesn't return **parts** like rst2html does this verions uses Nokogiri to extract the body contents. 
+The main change on this fork is that this version uses Nokogiri to extract the HTML body contents since rst2html5 doesn't return parts like rst2html. 
 
 Requirements
 ============
