@@ -8,7 +8,7 @@ module Jekyll
     priority :low
 
     def matches(ext)
-      ext =~ /rst/i
+      ext =~ /^\.rst$/i
     end
 
     def output_ext(ext)
@@ -16,9 +16,9 @@ module Jekyll
     end
 
     def convert(content)
-      # RbST.executables = {:html => "/usr/local/bin/rst2html5"}
-      RbST.executables = {:html => "#{File.expand_path(File.dirname(__FILE__))}/rst2html5.py"}
-      rst2htmlcontent = RbST.new(content).to_html(:initial_header_level => 1)
+      dirname = "#{File.expand_path(File.dirname(__FILE__))}"
+      RbST.executables = {:html => dirname + "/rst2html5.py"}
+      rst2htmlcontent = RbST.new(content).to_html(:initial_header_level => 2)
       document = Nokogiri::HTML(rst2htmlcontent)
       content = document.css('body').inner_html
     end
