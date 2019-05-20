@@ -21,7 +21,7 @@ The output also conforms to XHTML 1.0 transitional
 """
 
 try:
-    import locale # module missing in Jython
+    import locale  # module missing in Jython
     locale.setlocale(locale.LC_ALL, '')
 except locale.Error:
     pass
@@ -32,4 +32,6 @@ description = (u'Generates HTML 5 documents from standalone '
                u'reStructuredText sources '
                + default_description)
 
-publish_cmdline(writer_name='html5', description=description)
+
+publish_cmdline(writer_name='html5', description=description,
+                settings_overrides={'syntax_highlight': 'short'})
